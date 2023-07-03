@@ -10,27 +10,21 @@
  * @return {ListNode}
  */
 var reverseList = function(head) {
-    
+    // edgeCase when there is no list or list of one node 
     if(!head || !head.next){
         return head
     }
-    
-    
-    let pointer = head.next
-    let temp;
-    let before = head
-    
-    
+
+    let current = head
+    let next = head.next
     head.next = null
-    
-    
-    while(pointer){
-        temp = pointer.next
-        pointer.next = before
-        before = pointer
-        pointer = temp
+
+    while(next){
+        temp = next.next
+        next.next = current
+        current = next
+        next = temp
     }
-    
-    
-    return before
+
+    return current
 };
